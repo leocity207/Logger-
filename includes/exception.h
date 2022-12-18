@@ -1,7 +1,14 @@
+#ifndef EXCEPTION_H
+#define EXCEPTION_H
+
+
 #include <exception>
-#include "src/log/log.h"
 #include <string>
 #include <iostream>
+
+
+#include "log.h"
+
 
 
 class Exception 
@@ -61,4 +68,5 @@ TRACE_EXCEPTION(function ," Error");\
 throw class();\
 }\
 
+#endif // !EXCFEPTION_H
 

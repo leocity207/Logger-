@@ -1,5 +1,5 @@
 
-#include "log_enterleave.h"
+#include "../includes/log_enterleave.h"
 
 
 Log_EnterLeave::Log_EnterLeave(const char* message) noexcept(true): m_message(message)

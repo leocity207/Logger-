@@ -1,9 +1,11 @@
-#include "log_file.h"
-#include "src/exception/exception.h"
-#include "src/utils/time.h"
-#include "src/system/process.h"
+#include "../includes/log_file.h"
+#include "../includes/exception.h"
+#include "../includes/time.h"
+#include "../includes/process.h"
 #include <ctime> 
-#include "src/config.h"
+
+extern const char* GET_COMMIT_HASH();
+extern const char* GET_VERSION();
 
 Log_File::Log_File() noexcept
 {
@@ -18,8 +20,8 @@ Log_File::Log_File() noexcept
     
     this->m_file_stream << "##################################################################" << std::endl;
     this->m_file_stream << "Begining of log: " << Get_Current_Time("%A %c") << std::endl;
-    this->m_file_stream << "commit hash: " << GIT_COMMIT_HASH << std::endl;
-    this->m_file_stream << "version " << HIVEN_VERSION_MAJOR << "." << HIVEN_VERSION_MINOR << std::endl;
+    this->m_file_stream << "commit hash: " << GET_COMMIT_HASH() << std::endl;
+    this->m_file_stream << "version " << GET_VERSION() << std::endl;
     this->m_file_stream << std::endl;
 }
 
