@@ -10,10 +10,12 @@
 #ifdef DEBUG
 
 // file to include to get all the log functionality
-#define TRACE(...)           Log_Base::Write_To_Log("",__VA_ARGS__);
-#define TRACE_EXCEPTION(...) Log_Base::Write_To_Log("[Exception]",__VA_ARGS__);
-#define TRACE_ERROR(...)     Log_Base::Write_To_Log("[Error]",__VA_ARGS__);
+#define TRACE(...)           Log_Base::Write_To_Log("[info]",__VA_ARGS__);
+#define TRACE_EXCEPTION(...) Log_Base::Write_To_Log("[Exception]","file: ",std::filesystem::path(__FILE__).filename()," at line : ",__LINE__," :",__VA_ARGS__);
+#define TRACE_ERROR(...)     Log_Base::Write_To_Log("[Error]"    ,"file: ",std::filesystem::path(__FILE__).filename()," at line : ",__LINE__," :",__VA_ARGS__);
 #define TRACE_DEBUG(...)     Log_Base::Write_To_Log("[Debug]",__VA_ARGS__);
+
+#define TRACE_RETURN(trace_type,value,...) {Log_Base::Write_To_Log(trace_type,__VA_ARGS__); return value;};
 
 
 //---------------------------------------------------------------------
@@ -28,6 +30,7 @@
 #define TRACE_ERROR(...)     
 #define TRACE_DEBUG(...)   
 #define TRACE_ENTERLEAVE(x)  
+#define TRACE_RETURN(trace_type,value,...) return value;
 
 #endif //DEBUG_TRACE
 
